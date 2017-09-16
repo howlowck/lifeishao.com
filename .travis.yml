@@ -45,7 +45,7 @@ script:
   - mkdir themes
   - git clone https://github.com/shenoybr/hugo-goa themes/hugo-goa
   - hugo
-  - azcopy --source public --destination https://haosblob.blob.core.windows.net/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive --set-content-type
+  - azcopy --source public --destination https://haosblob.blob.core.windows.net/lifeishao/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive --set-content-type
 
 after-script:
   - echo "execute after script"
