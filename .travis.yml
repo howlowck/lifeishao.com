@@ -15,10 +15,8 @@ install:
 cache: 
   - az
   - hugo
-  
+
 # Build the website
 script:
   - hugo
-
-deploy:
   - python deploy.py
