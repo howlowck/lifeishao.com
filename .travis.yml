@@ -47,5 +47,5 @@ script:
   - hugo
   - azcopy --source public --destination https://haosblob.blob.core.windows.net/lifeishao/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive --set-content-type
 
-after-script:
+after_script:
   - echo "execute after script"
