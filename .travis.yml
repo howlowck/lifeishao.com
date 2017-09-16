@@ -1,17 +1,17 @@
 dist: wheezy
-sudo: on
+sudo: off
 addons:
   apt:
     packages:
       - python-dev
 
 install: 
-  - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | tee /etc/apt/sources.list.d/azure-cli.list
-  - apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
-  - apt-get install apt-transport-https
-  - apt-get update && sudo apt-get install azure-cli
-  - apt-get install snapd
-  - snap install hugo
+  - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+  - sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
+  - sudo apt-get install apt-transport-https
+  - sudo apt-get update && sudo apt-get install azure-cli
+  - sudo apt-get install snapd
+  - sudo snap install hugo
 
 cache: 
   - az
