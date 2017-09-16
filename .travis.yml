@@ -1,0 +1,8 @@
+addons:
+  apt:
+    packages:
+      - hugo
+
+# Build the website
+script:
+  - hugo

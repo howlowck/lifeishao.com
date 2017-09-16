@@ -1,0 +1,56 @@
+baseurl = "https://www.lifeishao.com/"
+title = "Hao's Home Page"
+languageCode = "en-us"
+theme = "hugo-goa"
+author = "Hao Luo"
+publishdir = "public"
+
+## Hugo Built-in Features
+disqusShortname = "" # Comment out to disable Disqus.
+googleAnalytics = "XYZ"
+enableRobotsTXT = true
+
+## Site Settings
+[params]
+author = "Hao Luo"
+intro = "Learn, Create, Share"
+description = "I'm a Technical Evangelist @ Microsoft. <br /><br /> I love programming language paradigms <br /> and nerd out on the \"magic\" behind higher-level langauges <br /><br /> Sometimes I build tools to make developer's life a little easier."
+authorimage = "headshot.jpg"
+dateformat = "Jan 2, 2006"
+
+## Site Meta Settings
+[params.meta]
+description = "Life is Hao"
+keywords = "Hao Luo, Landing Page, Developer, Chicago"
+
+## Social Accounts
+[params.social]
+github = "howlowck"
+instagram = "lifeishao"
+linkedin = "haoluo12"
+twitter = "howlowck"
+stackoverflow = "812436"
+
+## Extras
+[params.extra]
+copyright = "© 2017. Hao Luo. [Some Rights Reserved](http://creativecommons.org/licenses/by/3.0/)." 
+poweredby = false
+highlightjs = true
+
+## Main Menu
+[[menu.main]]
+    name = "my blog"
+    weight = 100
+    url = "https://blog.lifeishao.com"
+
+[[menu.main]]
+    name = "Face Trainer Tool"
+    identifier = "facetrainer"
+    weight = 200
+    url = "https://face.lifeishao.com"
+
+[[menu.main]]
+    name = "Real Time Quarto Game"
+    identifier = "quarto"
+    weight = 300
+    url = "http://quarto.lifeishao.com"
