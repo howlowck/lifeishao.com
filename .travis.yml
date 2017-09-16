@@ -27,8 +27,14 @@ install:
   - go get -u -v github.com/spf13/hugo
   - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
   - sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
-  - sudo apt-get install apt-transport-https
-  - sudo apt-get update && sudo apt-get install azure-cli
+  - sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list' 
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+  - curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list > ./microsoft-prod.list
+  - sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+  - curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  - sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+  - sudo apt-get update
+  - sudo apt-get install apt-transport-https azcopy azure-cli
 
 cache: 
   - az
@@ -39,4 +45,7 @@ script:
   - mkdir themes
   - git clone https://github.com/shenoybr/hugo-goa themes/hugo-goa
   - hugo
-  - python deploy.py
+  - azcopy --source public --destination https://haosblob.blob.core.windows.net/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive --set-content-type
+
+after-script:
+  - echo "execute after script"

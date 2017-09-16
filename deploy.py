@@ -17,7 +17,6 @@ directory_name = "lifeishao"
 cdn_endpoint = "lifeishao"
 cdn_profile = "haos-premium-cdn"
 
-
 extensions = set()
 
 for subdir, dirs, files in os.walk(dir_path):
@@ -27,20 +26,7 @@ for subdir, dirs, files in os.walk(dir_path):
 
 for extension in extensions:
     mime = mimetypes.types_map[extension]
-    command = [
-        "az", 
-        "storage", 
-        "blob", 
-        "upload-batch", 
-        "-s", 
-        "public", 
-        "-d", 
-        directory_name, 
-        "--pattern", 
-        "*"+extension, 
-        "--content-type", 
-        mime
-    ]
+    command = ["az", "storage", "blob", "upload-batch", "-s", "public", "-d", directory_name, "--pattern", "*"+extension, "--content-type", mime]
     print(subprocess.check_output(command))
 
 print('Purging CDN')
