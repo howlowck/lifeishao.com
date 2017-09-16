@@ -45,7 +45,9 @@ script:
   - mkdir themes
   - git clone https://github.com/shenoybr/hugo-goa themes/hugo-goa
   - hugo
-  - azcopy --source public --destination https://haosblob.blob.core.windows.net/lifeishao/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive --set-content-type
-
+  - azcopy --source public --destination https://haosblob.blob.core.windows.net/lifeishao/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive -y --set-content-type
+  - az login --service-principal -u $AZURE_SERVICE_PRINCIPAL_APP_ID --password $AZURE_SERVICE_PRINCIPAL_APP_PASSWORD --tenant $AZURE_SERVICE_PRINCIPAL_TENANT
+  - az cdn endpoint purge -g haosblog-rg -n lifeishao --profile-name haos-premium-cdn --content-paths /*
+   
 after_script:
   - echo "execute after script"
