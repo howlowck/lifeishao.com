@@ -37,6 +37,6 @@ cache:
 # Build the website
 script:
   - mkdir themes
-  - git clone git clone https://github.com/shenoybr/hugo-goa themes/hugo-goa
+  - git clone https://github.com/shenoybr/hugo-goa themes/hugo-goa
   - hugo
   - python deploy.py
