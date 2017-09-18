@@ -20,8 +20,10 @@ branches:
 env:
   global:
     - SOURCE_DIR="public"
-    - BUILD_BRANCH="source"
-    - DEPLOY_BRANCH="master"
+    - DESTINATION_PATH="https://haosblob.blob.core.windows.net/lifeishao/"
+    - CDN_RESOURCE_GROUP="haosblog-rg"
+    - CDN_ENDPOINT_NAME="lifeishao"
+    - CDN_PROFILE="haos-premium-cdn"
 
 install: 
   - go get -u -v github.com/spf13/hugo
@@ -39,15 +41,16 @@ install:
 cache: 
   - az
   - hugo
+  - azcopy
 
 # Build the website
 script:
   - mkdir themes
   - git clone https://github.com/shenoybr/hugo-goa themes/hugo-goa
   - hugo
-  - azcopy --source public --destination https://haosblob.blob.core.windows.net/lifeishao/ --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive -y --set-content-type
+  - azcopy --source $SOURCE_DIR --destination $DESTINATION_PATH --dest-key $AZURE_STORAGE_ACCESS_KEY --recursive --quiet --set-content-type
   - az login --service-principal -u $AZURE_SERVICE_PRINCIPAL_APP_ID --password $AZURE_SERVICE_PRINCIPAL_APP_PASSWORD --tenant $AZURE_SERVICE_PRINCIPAL_TENANT
-  - az cdn endpoint purge -g haosblog-rg -n lifeishao --profile-name haos-premium-cdn --content-paths /*
+  - az cdn endpoint purge -g CDN_RESOURCE_GROUP -n CDN_ENDPOINT_NAME --profile-name CDN_PROFILE --content-paths /*
    
 after_script:
   - echo "execute after script"
