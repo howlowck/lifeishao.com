@@ -14,7 +14,7 @@ enableRobotsTXT = true
 [params]
 author = "Hao Luo"
 intro = "Learn, Create, Share"
-description = "I'm a Sr Software Engineer @ Microsoft. <br /><br /> I love programming paradigms <br /> and nerd out on the \"magic\" behind higher-level langauges <br /><br /> Sometimes I build tools to make developer's life a little easier."
+description = "I'm a Sr Software Engineer @ Microsoft. <br /><br /> I love programming paradigms <br /> and nerd out on the \"magic\" behind higher-level languages <br /><br /> Sometimes I build tools to make developer's life a little easier."
 authorimage = "headshot.jpg"
 dateformat = "Jan 2, 2006"
 
